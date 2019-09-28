@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <title>Title</title>
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+</head>
+
+<body>
+
+  <div>
+    <h1 id="message">Guessing game</h1>
+  </div>
+  <input id="UserInput" />
+  <button id="guessButton">Guess</button>
+  <div>
+    <p id="pastGuess"></p>
+  </div>
+
+  <div>
+    <p id="GuessCountToExit"></p>
+  </div>
+
+
+  <script>
+    let button = document.getElementById("guessButton")
+    let pastResult = " ";
+    let count  = 10;
+    button.addEventListener("click", function () {
+
+      let result = 12;
+      let getUserInput = document.getElementById("UserInput").value;
+      pastResult += " " + getUserInput;
+
+      document.getElementById("pastGuess").innerHTML = pastResult;
+      console.log(getUserInput);
+      document.getElementById("GuessCountToExit").innerHTML = "Số lần còn lại: "+ (count-1);
+
+      if (getUserInput == result) {
+        document.getElementById("message").innerHTML = "Congratulations!! You guessed correctly";
+        document.getElementById("message").style.color = "green"
+      }
+      else {
+
+        if (getUserInput < result) {
+          document.getElementById("message").innerHTML = "Sorry your guess is too low";
+          document.getElementById("message").style.color = "red"
+        }
+        else {
+          document.getElementById("message").innerHTML = "Sorry your guess is too high"
+          document.getElementById("message").style.color = "red"
+        }
+      }
+      count--;
+      console.log(count);
+
+      if(count == 0 ){
+       let elem = document.getElementById("guessButton");
+       elem.parentNode.removeChild(elem);
+      }
+    }
+    )
+  </script>
+
+</body>
+
+</html>
